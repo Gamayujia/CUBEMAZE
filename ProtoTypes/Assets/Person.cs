@@ -4,88 +4,87 @@ using Assets;
 
 public class Person : MonoBehaviour
 {
-    Transform cubeTrans;
-    Vector3 startPos, currentPos, targetPos;
     GameObject person;
+    GameObject room;
+    Room roomScript;
+    Vector3 roomSize;
+    Vector3 localScale;
 
     // Use this for initialization
     void Start()
     {
-        cubeTrans = gameObject.GetComponent<Transform>();
-        startPos = cubeTrans.position;
-        currentPos = cubeTrans.position;
-        targetPos = cubeTrans.position;
-        person = this.gameObject;
-        person.tag = "Person";
+        gameObject.tag = "Person";
+        person = gameObject;
+        room = GameObject.FindGameObjectWithTag("Room");
+        roomScript = (Room) room.GetComponent(typeof(Room));
+        roomSize = roomScript.GetRoomSize();
+        localScale = person.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         string moveType = Movement();
-        UpdateMovement();
         ExpandRoom(moveType);
-        print("Start: " + startPos);
-        print("Current: " + currentPos);
-        print("Target: " + targetPos);
     }
 
     string Movement()
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            targetPos.x -= 1;
-            return Constants.LEFT;
+            if (!Mathf.Approximately(transform.localPosition.x, -roomSize.x / 2) && transform.localPosition.x > -roomSize.x / 2 + localScale.x / 2)
+            {
+                transform.localPosition += localScale.x * Vector3.left / 2;
+                return Constants.LEFT;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            cubeTrans.Translate(Vector3.right / 2);
-            return Constants.RIGHT;
+            if (!Mathf.Approximately(transform.localPosition.x, roomSize.x / 2) && transform.localPosition.x < roomSize.x / 2 - localScale.x / 2)
+            {
+                transform.localPosition += localScale.x * Vector3.right / 2;
+                return Constants.RIGHT;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            cubeTrans.Translate(Vector3.forward / 2);
-            return Constants.FORWARD;
+            if (!Mathf.Approximately(transform.localPosition.z, roomSize.z / 2) && transform.localPosition.z < roomSize.z / 2 - localScale.z / 2)
+            {
+                transform.localPosition += localScale.z * Vector3.forward / 2;
+                return Constants.FORWARD;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            cubeTrans.Translate(Vector3.back / 2);
-            return Constants.BACKWARD;
+            if (!Mathf.Approximately(transform.localPosition.z, roomSize.z / 2) && transform.localPosition.z > -roomSize.z / 2 + localScale.z / 2)
+            {
+                transform.localPosition += localScale.z * Vector3.back / 2;
+                return Constants.BACKWARD;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            cubeTrans.Translate(Vector3.up / 2);
-            return Constants.UP;
+            if (!Mathf.Approximately(transform.localPosition.y, roomSize.y) && transform.localPosition.y < roomSize.y - localScale.y / 2)
+            {
+                transform.localPosition += localScale.y * Vector3.up / 2;
+                return Constants.UP;
+            }
         }
         else if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            cubeTrans.Translate(Vector3.down / 2);
-            return Constants.DOWN;
+            if (!Mathf.Approximately(transform.localPosition.y, 0.05f) && transform.localPosition.y > localScale.y / 2)
+            {
+                transform.localPosition += localScale.y * Vector3.down / 2;
+                return Constants.DOWN;
+            }
         }
 
         return "";
     }
 
-    void UpdateMovement()
-    {
-        if (!Mathf.Approximately(targetPos.x, currentPos.x))
-        {
-            if (targetPos.x.CompareTo(currentPos.x) > 0)
-            {
-                currentPos.x += Constants.PACE_SPEED;
-            }
-            else if (targetPos.x.CompareTo(currentPos.x) < 0)
-            {
-                currentPos.x -= Constants.PACE_SPEED;
-            }
-        }
-
-        //cubeTrans.transform.position = currentPos;
-    }
-
     void ExpandRoom(string moveType)
     {
-        /*GameObject room = GameObject.FindGameObjectWithTag("Room");
+        GameObject room = GameObject.FindGameObjectWithTag("Room");
         Vector3 expandVector = room.transform.localScale;
         Vector3 positionVector = room.transform.position;
 
@@ -120,7 +119,7 @@ public class Person : MonoBehaviour
         }
 
         room.transform.localScale = expandVector;
-        room.transform.position = positionVector;*/
+        room.transform.position = positionVector;
     }
 }
 

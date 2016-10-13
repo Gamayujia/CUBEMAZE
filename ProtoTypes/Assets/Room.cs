@@ -20,6 +20,7 @@ public class Room : MonoBehaviour {
     private int currentEndIndex_Y;
     private int currentStartIndex_Z;
     private int currentEndIndex_Z;
+
     private Vector3 cubeScale;
     private GameObject[,] leftWall;
     private GameObject[,] backWall;
@@ -86,24 +87,25 @@ public class Room : MonoBehaviour {
             {
                 GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
                 cube.GetComponent<Renderer>().material = roomMaterial;
+                cube.transform.SetParent(this.gameObject.transform);
                 cube.transform.localScale = cubeScale;
 
                 switch (wallType)
                 {
                     case Constants.LEFT_WALL:
                         {
-                            cube.transform.position = new Vector3(Constants.BASE_POS_X, Constants.BASE_POS_Y + countIndex1 * Constants.CUBE_SCALE, Constants.BASE_POS_Z - countIndex2 * Constants.CUBE_SCALE);
+                            cube.transform.localPosition = new Vector3(Constants.BASE_POS_X, Constants.BASE_POS_Y + countIndex1 * Constants.CUBE_SCALE, Constants.BASE_POS_Z - countIndex2 * Constants.CUBE_SCALE);
                             break;
                         }
                     case Constants.BACK_WALL:
                         {
-                            cube.transform.position = new Vector3(Constants.BASE_POS_X - countIndex2 * Constants.CUBE_SCALE, Constants.BASE_POS_Y + countIndex1 * Constants.CUBE_SCALE, Constants.BASE_POS_Z);
+                            cube.transform.localPosition = new Vector3(Constants.BASE_POS_X - countIndex2 * Constants.CUBE_SCALE, Constants.BASE_POS_Y + countIndex1 * Constants.CUBE_SCALE, Constants.BASE_POS_Z);
                             break;
                         }
                     case Constants.TOP_WALL:
                         {
                             int cubeCount = (int)(Constants.ROOM_Y_LENGTH / Constants.CUBE_SCALE);
-                            cube.transform.position = new Vector3(Constants.BASE_POS_X - countIndex2 * Constants.CUBE_SCALE, Constants.BASE_POS_Y + cubeCount * Constants.CUBE_SCALE, Constants.BASE_POS_Z - countIndex1 * Constants.CUBE_SCALE);
+                            cube.transform.localPosition = new Vector3(Constants.BASE_POS_X - countIndex2 * Constants.CUBE_SCALE, Constants.BASE_POS_Y + cubeCount * Constants.CUBE_SCALE, Constants.BASE_POS_Z - countIndex1 * Constants.CUBE_SCALE);
                             break;
                         }
                     default:
@@ -117,5 +119,10 @@ public class Room : MonoBehaviour {
             countIndex2 = 0;
             countIndex1++;
         }
+    }
+
+    public Vector3 GetRoomSize()
+    {
+        return new Vector3(Constants.ROOM_X_LENGTH, Constants.ROOM_Y_LENGTH, Constants.ROOM_Z_LENGTH);
     }
 }
