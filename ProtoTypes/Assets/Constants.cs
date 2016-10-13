@@ -11,12 +11,12 @@ namespace Assets
         public const float ROOM_Y_LENGTH = 1;
         public const float ROOM_Z_LENGTH = 1;
         public const int ROOM_ARRAY_SIZE = 1000;
-        public const float CUBE_SCALE = 0.01f;
-        public const float BASE_POS_X = 0.5f;
-        public const float BASE_POS_Y = 0.005f;
-        public const float BASE_POS_Z = 0.5f;
-        public const string LEFT_WALL = "Left Wall";
-        public const string BACK_WALL = "Back Wall";
+        public const float CUBE_SCALE = 0.1f;
+        public const float BASE_POS_X = -0.5f;
+        public const float BASE_POS_Y = 0.05f;
+        public const float BASE_POS_Z = -0.5f;
+        public const string RIGHT_WALL = "Right Wall";
+        public const string FRONT_WALL = "FRONT Wall";
         public const string TOP_WALL = "Top Wall";
 
         public const string UP = "Up";
@@ -26,6 +26,13 @@ namespace Assets
         public const string LEFT = "Left";
         public const string RIGHT = "Right";
 
-        public const float PACE_SPEED = 0.1f;
+        public const string EXPAND_DIRECTION_POSITIVE_X = "+X";
+        public const string EXPAND_DIRECTION_POSITIVE_Y = "+Y";
+        public const string EXPAND_DIRECTION_POSITIVE_Z = "+Z";
+        public const string EXPAND_DIRECTION_NEGATIVE_X = "-X";
+        public const string EXPAND_DIRECTION_NEGATIVE_Y = "-Y";
+        public const string EXPAND_DIRECTION_NEGATIVE_Z = "-Z";
+
+        public const float PACE_SPEED = 0.2f;
     }
 }

@@ -84,42 +84,7 @@ public class Person : MonoBehaviour
 
     void ExpandRoom(string moveType)
     {
-        GameObject room = GameObject.FindGameObjectWithTag("Room");
-        Vector3 expandVector = room.transform.localScale;
-        Vector3 positionVector = room.transform.position;
-
-        switch (moveType)
-        {
-            case Constants.Left:
-                expandVector.x += 10f;
-                positionVector.x -= 5f;
-                break;
-            case Constants.Right:
-                expandVector.x += 10f;
-                positionVector.x += 5f;
-                break;
-            case Constants.Forward:
-                expandVector.z += 10f;
-                positionVector.z += 5f;
-                break;
-            case Constants.Backward:
-                expandVector.z += 10f;
-                positionVector.z -= 5f;
-                break;
-            case Constants.Up:
-                expandVector.y += 10f;
-                positionVector.y += 5f;
-                break;
-            case Constants.Down:
-                expandVector.y += 10f;
-                positionVector.y -= 5f;
-                break;
-            default:
-                break;
-        }
-
-        room.transform.localScale = expandVector;
-        room.transform.position = positionVector;
+        roomScript.ExpandRoom(moveType);
     }
 }
 
