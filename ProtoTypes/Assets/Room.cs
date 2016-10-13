@@ -3,6 +3,8 @@ using System.Collections;
 using Assets;
 
 public class Room : MonoBehaviour {
+    public Material roomMaterial;
+
     private float currentX;
     private float currentY;
     private float currentZ;
@@ -25,6 +27,8 @@ public class Room : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        this.gameObject.tag = "Room";
+
         InitializeVariables();
         InitializeWalls();
     }
@@ -81,6 +85,7 @@ public class Room : MonoBehaviour {
             for (int j = startIndex2; j < endIndex2; j++)
             {
                 GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                cube.GetComponent<Renderer>().material = roomMaterial;
                 cube.transform.localScale = cubeScale;
 
                 switch (wallType)
