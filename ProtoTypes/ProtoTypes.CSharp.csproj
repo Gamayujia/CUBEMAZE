@@ -66,13 +66,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Constants.cs" />
     <Compile Include="Assets\Cube.cs" />
     <Compile Include="Assets\Cube2.cs" />
     <Compile Include="Assets\Cube4.cs" />
     <Compile Include="Assets\LargeCube.cs" />
-    <Compile Include="Assets\Person.cs" />
-    <Compile Include="Assets\Room.cs" />
+    <Compile Include="Assets\Scripts\Constants.cs" />
+    <Compile Include="Assets\Scripts\Noise.cs" />
+    <Compile Include="Assets\Scripts\Person.cs" />
+    <Compile Include="Assets\Scripts\Room.cs" />
     <Compile Include="Assets\SmallCube.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
