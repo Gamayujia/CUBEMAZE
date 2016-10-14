@@ -25,9 +25,7 @@ public class Person : MonoBehaviour
     void Update()
     {
         string moveType = Movement();
-        string reshapeType = Interaction();
         ExpandRoom(moveType);
-        ReshapeRoom(reshapeType);
     }
 
     string Movement()
@@ -84,31 +82,9 @@ public class Person : MonoBehaviour
         return "";
     }
 
-    string Interaction()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            return Constants.PERLIN_NOISE;
-        }
-
-        return "";
-    }
-
     void ExpandRoom(string moveType)
     {
         roomScript.ExpandRoom(moveType);
-    }
-
-    void ReshapeRoom(string reshapeType)
-    {
-        switch (reshapeType)
-        {
-            case Constants.PERLIN_NOISE:
-                roomScript.PerlinNoise();
-                break;
-            default:
-                break;
-        }
     }
 }
 

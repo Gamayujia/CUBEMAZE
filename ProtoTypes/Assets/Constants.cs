@@ -28,14 +28,12 @@ namespace Assets
         public const string LEFT = "Left";
         public const string RIGHT = "Right";
 
-        public const string PERLIN_NOISE = "Perlin Noise";
-
-        public const string DIRECTION_POSITIVE_X = "+X";
-        public const string DIRECTION_POSITIVE_Y = "+Y";
-        public const string DIRECTION_POSITIVE_Z = "+Z";
-        public const string DIRECTION_NEGATIVE_X = "-X";
-        public const string DIRECTION_NEGATIVE_Y = "-Y";
-        public const string DIRECTION_NEGATIVE_Z = "-Z";
+        public const string EXPAND_DIRECTION_POSITIVE_X = "+X";
+        public const string EXPAND_DIRECTION_POSITIVE_Y = "+Y";
+        public const string EXPAND_DIRECTION_POSITIVE_Z = "+Z";
+        public const string EXPAND_DIRECTION_NEGATIVE_X = "-X";
+        public const string EXPAND_DIRECTION_NEGATIVE_Y = "-Y";
+        public const string EXPAND_DIRECTION_NEGATIVE_Z = "-Z";
 
         public const float PACE_SPEED = 0.2f;
     }
