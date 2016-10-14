@@ -15,8 +15,10 @@ namespace Assets
         public const float BASE_POS_X = -0.5f;
         public const float BASE_POS_Y = 0.05f;
         public const float BASE_POS_Z = -0.5f;
+        public const string LEFT_WALL = "Left Wall";
         public const string RIGHT_WALL = "Right Wall";
-        public const string FRONT_WALL = "FRONT Wall";
+        public const string FRONT_WALL = "Front Wall";
+        public const string BACK_WALL = "Back Wall";
         public const string TOP_WALL = "Top Wall";
 
         public const string UP = "Up";
